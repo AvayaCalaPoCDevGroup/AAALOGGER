@@ -1,0 +1,74 @@
+﻿{
+  "name": "My Tasks-from-service.AAALOGGER",
+  "categories":
+[
+  {
+        "name": "AAA Logger",
+        "mTypes": 
+         [
+            {
+                "name": "AAA Logger",
+                "snapinVersion": "3.0",
+		"displayName": "AAA Logger",
+                "tag": "AAALogger",
+                "svg": "notepad",
+                "helpUrl": "AAALogger.html",
+                "tile": "gold",
+                "serviceName": "CollabDesigner",
+                "custom": "true",
+                "nodeType": "activity",
+                "modelClass": "service.AAALOGGER.LoggerModel",
+                "executionClass": "service.AAALOGGER.LoggerExecution",
+		        "mapping": "[\"input\", \"output\"]",
+                "properties": [
+                    {   "name": "nivel",
+                        "displayPropName": "Seleccionar el nivel del Log",
+                        "type": "String",
+                        "controlType": "combo",
+                        "modelName": "setNivel",
+                        "filler": "getInstance.comboNivel",
+                        "fillerModel": "service.AAALOGGER.FillerUtil"
+                    },
+                    {   "name": "nameLogger",
+                        "displayPropName": "Indicar el nombre del archivo",
+                        "type": "String",
+                        "controlType": "text",
+                        "modelName": "setLogName"
+                    },
+                    {
+                        "name": "LogMessage",
+                        "displayPropName": "Log",
+                        "type": "String",
+                        "controlType": "multilineText",
+                        "textLines": "7",
+                        "modelName": "setLogMessage",
+                        "mapping":"LogMessage"
+                    }
+                ],
+	        "input_schema": "{
+			        title: InputSchema,
+			        type: object,
+			        properties: {
+			            LogMessage: {
+			                type: string
+			            },
+			            Nivel: {
+			                type: string
+			            }
+
+			        }
+	        }",
+                "output_schema": "{
+                        title: OutputSchema,
+                        type: object,
+                        properties: {
+                            status: {
+                                type: string
+                            }
+                        }
+                }"
+            }
+        ]
+  }
+]
+}
